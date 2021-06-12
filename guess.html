@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess a NUmber</title>
+</head>
+
+<body>
+
+
+    <input id="inputField" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" />
+    <button id="button">Submit</button>
+    <p id="paragraph"></p>
+
+
+
+    <script>
+        let randomNumber = Math.floor(Math.random() * 10 + 1)
+        let guess = 1;
+        let button = document.getElementById("button");
+
+        button.addEventListener('click', function guessNumber() {
+            var inputElement = document.getElementById("inputField");
+            var result = document.getElementById("paragraph");
+
+            setTimeout(function() {
+                inputElement.value = ''
+            }, 3000);
+            setTimeout(function() {
+                result.innerHTML = ""
+            }, 3000);
+
+            if (randomNumber == inputElement.value) {
+                result.innerHTML = "Correct!! " + guess;
+
+            } else if (randomNumber < inputElement.value) {
+                result.innerHTML = "YOu guessed too high ! ";
+                guess++;
+
+            } else {
+                result.innerHTML = "you guessed too low !";
+                guess++;
+
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>
